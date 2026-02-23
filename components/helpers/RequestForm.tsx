@@ -11,7 +11,13 @@ import {
 } from "@/schemas/appointment.schema";
 import { createAppointment } from "@/lib/api/appointment";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { servicesData } from "../constants/OurServicesSection";
+
+const servicesData = [
+  { title: "Medical Consultation" },
+  { title: "Surgical Procedures" },
+  { title: "Radiation Therapy" },
+  { title: "Hematto-oncology Services" },
+];
 
 export default function RequestForm() {
   const {
