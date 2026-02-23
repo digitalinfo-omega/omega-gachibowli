@@ -99,9 +99,9 @@ export default function FaqSection() {
   };
 
   return (
-    <section className="bg-white py-24 relative">
-      <div className="absolute left-0 top-0 w-[300px] h-[300px] rounded-full bg-[#EAF6F8] -z-10" />
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-white md:py-20 py-10 relative">
+      <div className="absolute left-0 top-0 w-75 h-75 rounded-full bg-[#EAF6F8] -z-10" />
+      <div className="container">
         <h2 className="text-3xl font-medium mb-16">FAQ's</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-10">

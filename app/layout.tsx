@@ -56,7 +56,6 @@ export default function RootLayout({
         <ReactQueryProvider>
           <NavBar />
           {children}
-          <ModernMachine />
           {/* <RequestCallbackSection /> */}
           <Emergency />
           <Footer />

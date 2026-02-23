@@ -139,10 +139,19 @@ export default function SpecializedCare() {
     <section className="bg-[#0B0F14] py-28">
       <div className="container">
         <div className="text-center mb-20">
-          <p className="xs-para tracking-[0.35em] text-accent mb-4">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            className="xs-para tracking-[0.35em] text-accent mb-4"
+          >
             30+ MEDICAL SPECIALTIES
           </p>
-          <h2 className="heading text-white">
+          <h2
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            className="heading text-white"
+          >
             Specialized Care,{" "}
             <span className="text-accent italic">Tailored to You</span>
           </h2>
@@ -159,6 +168,9 @@ export default function SpecializedCare() {
                     ? "bg-[#F3C56B] text-black border-[#F3C56B]"
                     : "border-white/10 text-[#8B97A7]"
                 }`}
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay={i * 300}
               >
                 {tab.icon}
                 <span className="xs-para">{tab.label}</span>
@@ -167,10 +179,13 @@ export default function SpecializedCare() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {TABS[active].cards.map((card) => (
+            {TABS[active].cards.map((card, idx) => (
               <div
                 key={card.title}
-                className="border border-white/10 p-10 text-white min-h-[420px] flex flex-col"
+                className="border border-white/10 p-10 text-white min-h-105 flex flex-col"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+                data-aos-delay={idx * 200}
               >
                 <h3 className="para mb-6">{card.title}</h3>
                 <p className="sm-para text-[#8B97A7] mb-10 leading-relaxed">

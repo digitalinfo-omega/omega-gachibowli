@@ -94,7 +94,7 @@ export default function CancerCentresCarousel() {
   const next = () => setIndex((i) => (i === DATA.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative py-10 md:py-20 overflow-hidden">
       {/* Background Image (50% opacity) */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -109,10 +109,19 @@ export default function CancerCentresCarousel() {
       <div className="container">
         {/* Heading */}
         <div className="text-center mb-10">
-          <p className="heading text-accent italic font-semibold tracking-wide">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            className="heading text-accent italic font-semibold tracking-wide"
+          >
             CANCER CENTRES OF EXCELLENCE
           </p>
-          <p className="xl-para mt-2">
+          <p
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            className="xl-para mt-2"
+          >
             Four Pillars of Cancer Care, Internationally Recognized Excellence
           </p>
         </div>
@@ -136,15 +145,14 @@ export default function CancerCentresCarousel() {
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 grid lg:grid-cols-2 gap-8">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="500"
+          className="bg-white rounded-2xl shadow-xl p-6 lg:p-10 grid lg:grid-cols-2 gap-8"
+        >
           {/* Left Content */}
-          <div
-            className="
-    min-h-[506px]
-    lg:min-h-[385px]
-    flex flex-col justify-between
-  "
-          >
+          <div className="min-h-126.5 lg:min-h-96.25 flex flex-col justify-between">
             <h3 className="para text-secondary font-semibold mb-2">
               {active.title}
             </h3>
@@ -175,7 +183,12 @@ export default function CancerCentresCarousel() {
           </div>
 
           {/* Right Image */}
-          <div className="relative h-[260px] md:h-[320px] rounded-xl overflow-hidden">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="700"
+            className="relative h-65 md:h-80 rounded-xl overflow-hidden"
+          >
             <Image
               src={active.image}
               alt={active.title}

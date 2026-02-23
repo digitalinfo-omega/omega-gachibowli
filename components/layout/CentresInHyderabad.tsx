@@ -78,16 +78,23 @@ export default function CentresHyderabad() {
   return (
     <section className="py-10 md:py-20 bg-accent/10">
       <div className="container">
-        {/* Heading */}
-        <h2 className="heading font-medium mb-10">
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="heading font-medium mb-10"
+        >
           Omega Hospitals{" "}
           <span className="text-purple-700">Centres in Hyderabad</span>
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          {/* Card */}
-          <div className="lg:col-span-3 bg-white rounded-2xl shadow-md overflow-hidden p-7">
-            <div className="relative h-[340px]">
+          <div
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="100"
+            className="lg:col-span-3 bg-white rounded-2xl shadow-md overflow-hidden p-7"
+          >
+            <div className="relative h-85">
               <Image
                 src={activeCentre.image}
                 alt={activeCentre.name}
@@ -113,7 +120,7 @@ export default function CentresHyderabad() {
                   </span>
                 </div>
               </div>
-              {/* ✅ PARAGRAPH SECTION */}
+
               <p className="mt-3 text-gray-600 text-sm max-w-xl">
                 {activeCentre.description}
               </p>
@@ -136,9 +143,13 @@ export default function CentresHyderabad() {
             </div>
           </div>
 
-          {/* Right List */}
-          <aside className="space-y-4">
-            {CENTRES.map((centre) => {
+          <aside
+            data-aos="fade-up"
+            data-aos-duration="800"
+            data-aos-delay="200"
+            className="space-y-4"
+          >
+            {CENTRES.map((centre, index) => {
               const isActive = centre.id === activeCentre.id;
 
               return (

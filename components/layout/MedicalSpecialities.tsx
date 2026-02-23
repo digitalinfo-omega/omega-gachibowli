@@ -16,10 +16,14 @@ export default function MedicalSpecialities() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-10 md:py-20 bg-white">
       <div className="container">
         {/* Heading */}
-        <h2 className="text-center heading italic font-bold text-accent mb-16">
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="text-center heading italic font-bold text-accent mb-16"
+        >
           30+ Medical Specialties The Same Excellence You Expect from Omega
         </h2>
 
@@ -54,7 +58,7 @@ export default function MedicalSpecialities() {
 
                 {/* Triangle Pointer */}
                 {active === i && (
-                  <span className="absolute -bottom-4 w-0 h-0 border-l-[14px] border-r-[14px] border-t-[14px] border-l-transparent border-r-transparent border-t-secondary" />
+                  <span className="absolute -bottom-4 w-0 h-0 border-l-14px border-r-14px border-t-14px border-l-transparent border-r-transparent border-t-secondary" />
                 )}
               </button>
             ))}

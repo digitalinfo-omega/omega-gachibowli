@@ -12,10 +12,14 @@ import {
 
 export default function NextStepHealth() {
   return (
-    <section className="py-14">
+    <section className="py-10 md:py-20">
       <div className="container">
         {/* Heading */}
-        <h2 className="heading text-center font-semibold text-gray-500">
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="heading text-center font-semibold text-gray-500"
+        >
           Your Next Step Toward{" "}
           <span className="text-accent">Better Health</span>
         </h2>
@@ -28,6 +32,9 @@ export default function NextStepHealth() {
               className="flex items-center justify-center gap-2 border border-secondary/40 
                          text-secondary px-4 py-3 rounded-md hover:bg-secondary/10 
                          transition xs-para"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay={i * 100}
             >
               <item.icon size={18} />
               {item.label}
@@ -44,6 +51,7 @@ export default function NextStepHealth() {
             desc="Get expert guidance within 24 hours. Connect with our oncology team for personalized treatment plans."
             linkText="Schedule Consultation →"
             accent="accent"
+            idx={0}
           />
 
           {/* Screening */}
@@ -53,6 +61,7 @@ export default function NextStepHealth() {
             desc="Early detection saves lives. Explore our comprehensive cancer screening packages starting at ₹XXX."
             linkText="View Health Packages →"
             accent="secondary"
+            idx={1}
           />
 
           {/* Emergency */}
@@ -62,6 +71,7 @@ export default function NextStepHealth() {
             desc="24/7 cancer emergency services. Our team is ready when you need us most."
             linkText="Emergency: 98490 22121 →"
             accent="accent"
+            idx={2}
           />
         </div>
       </div>
@@ -75,20 +85,25 @@ function Card({
   desc,
   linkText,
   accent,
+  idx,
 }: {
   icon: any;
   title: string;
   desc: string;
   linkText: string;
   accent: "accent" | "secondary";
+  idx: number;
 }) {
   return (
     <div
       className={`border rounded-lg p-6 flex flex-col justify-between
                   border-gray-200 relative overflow-hidden`}
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay={idx * 300}
     >
       {/* Top Accent Line */}
-      <div className={`absolute top-0 left-0 h-[3px] w-full bg-${accent}`} />
+      <div className={`absolute top-0 left-0 h-0.75 w-full bg-${accent}`} />
 
       <div className="space-y-4">
         <div

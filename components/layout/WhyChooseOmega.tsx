@@ -4,15 +4,24 @@ import { Check, Building2, Users, Cpu, ShieldCheck, Globe } from "lucide-react";
 
 export default function WhyChooseOmega() {
   return (
-    <section className="relative bg-[#0b0f14] py-24">
+    <section className="relative bg-[#0b0f14] py-10 md:py-20">
       <div className="container">
         {/* Top Label */}
-        <p className="text-center sm-para tracking-[0.25em] text-accent mb-4">
+        <p
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="text-center sm-para tracking-[0.25em] text-accent mb-4"
+        >
           WHY CHOOSE OMEGA
         </p>
 
         {/* Heading */}
-        <h2 className="heading text-center text-white mb-16">
+        <h2
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+          className="heading text-center text-white mb-16"
+        >
           Why 13+ Lakh Patients{" "}
           <span className="text-accent italic">Trusted</span> Omega
         </h2>
@@ -24,6 +33,7 @@ export default function WhyChooseOmega() {
             icon={<Building2 size={18} />}
             title="Comprehensive Cancer Care Under One Roof"
             desc="Medical, surgical, and radiation oncology teams work together on your treatment plan—no running between facilities."
+            idx={0}
           />
 
           {/* Card 2 (Highlighted Border) */}
@@ -31,6 +41,7 @@ export default function WhyChooseOmega() {
             icon={<Users size={18} />}
             title="India's Leading Cancer Specialists"
             desc="Founded by Dr. Ch. Mohana Vamsy, Chief Surgical Oncologist, with decades of experience treating complex cases."
+            idx={1}
           />
 
           {/* Card 3 */}
@@ -38,6 +49,7 @@ export default function WhyChooseOmega() {
             icon={<Cpu size={18} />}
             title="Advanced Technology"
             desc="AI-powered Ethos LINAC, PET-MRI, robotic radiosurgery, and the latest treatment technologies."
+            idx={2}
           />
         </div>
 
@@ -47,21 +59,23 @@ export default function WhyChooseOmega() {
             icon={<ShieldCheck size={18} />}
             title="Insurance & Affordability"
             desc="Cashless treatment with 100+ insurance partners and transparent pricing."
+            idx={3}
           />
 
           <Card
             icon={<Globe size={18} />}
             title="International Patient Services"
             desc="Complete support from visa assistance to post-treatment follow-ups for patients worldwide."
+            idx={4}
           />
         </div>
 
         {/* Bottom Stats */}
         <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Stat label="66,500+ Successful Surgeries" />
-          <Stat label="NABH Accredited" />
-          <Stat label="24/7 Emergency Care" />
-          <Stat label="Insurance Accepted" />
+          <Stat label="66,500+ Successful Surgeries" idx={0} />
+          <Stat label="NABH Accredited" idx={1} />
+          <Stat label="24/7 Emergency Care" idx={2} />
+          <Stat label="Insurance Accepted" idx={3} />
         </div>
       </div>
     </section>
@@ -73,14 +87,19 @@ function Card({
   title,
   desc,
   highlight = false,
+  idx = 0,
 }: {
   icon: React.ReactNode;
   title: string;
   desc: string;
   highlight?: boolean;
+  idx: number;
 }) {
   return (
     <div
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay={idx * 200}
       className={`relative p-8 border rounded-md bg-transparent transition-colors duration-300
     ${
       highlight ? "border-accent/60" : "border-white/10 hover:border-accent/60"
@@ -97,9 +116,14 @@ function Card({
   );
 }
 
-function Stat({ label }: { label: string }) {
+function Stat({ label, idx }: { label: string; idx: number }) {
   return (
-    <div className="flex items-center gap-3 px-6 py-4 border border-accent/40 rounded-md text-white xs-para">
+    <div
+      className="flex items-center gap-3 px-6 py-4 border border-accent/40 rounded-md text-white xs-para"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+      data-aos-delay={(idx ?? 0) * 200}
+    >
       <Check className="text-accent" size={16} />
       {label}
     </div>
