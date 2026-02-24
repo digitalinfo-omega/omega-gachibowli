@@ -21,12 +21,12 @@ export default function InternationalPatients() {
           {/* LEFT PEACH BLOCK (SINGLE SHAPE) */}
           <div className="relative bg-[#FFF5EC] rounded-[28px] px-12 pt-12 pb-14">
             {/* Title (INSIDE SHAPE – TOP LEFT) */}
-            <h2 className="heading text-[#2F343B] leading-tight mb-10 max-w-[240px]">
+            <h2 className="heading text-[#2F343B] leading-tight mb-10 max-w-60">
               International <br /> Patients
             </h2>
 
             {/* Badge (INSIDE SHAPE – TOP RIGHT) */}
-            <div className="absolute top-8 right-8 bg-accent rounded-full px-6 py-4 flex items-center gap-4 text-white xs-para">
+            <div className="absolute top-8 right-8 bg-accent rounded-full px-2 py-3 flex items-center gap-2 text-white xs-para">
               <span className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-accent">
                 ☎
               </span>
@@ -58,7 +58,7 @@ export default function InternationalPatients() {
 
           {/* RIGHT IMAGE */}
           <div className="relative flex justify-center">
-            <div className="relative w-[300px] h-[300px] md:w-[360px] md:h-[360px] rounded-full bg-[#FFF5EC] flex items-center justify-center">
+            <div className="relative w-75 h-75 md:w-102 md:h-103 rounded-full bg-[#FFF5EC] flex items-center justify-center">
               <Image
                 src="/images/international.webp"
                 alt="International Patients"
@@ -78,7 +78,7 @@ export default function InternationalPatients() {
 function Service({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="w-10 h-10 border border-accent rounded-md flex items-center justify-center text-accent">
+      <div className="w-10 h-10 p-2 border border-accent rounded-md flex items-center justify-center text-accent">
         {icon}
       </div>
       <span className="leading-snug">{label}</span>

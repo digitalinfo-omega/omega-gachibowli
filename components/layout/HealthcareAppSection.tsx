@@ -71,20 +71,20 @@ export default function HealthcareAppSection() {
               />
 
               <div className="absolute -right-10 top-10 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-55 shadow-lg">
-                Omega hospitals specializes in cancer treatment. Dr. Mohana
-                Vamsy who has more than 30 years of experience in cancer
-                treatment is your go-to person for his opinion on treatment for
-                the cancer patient.
+                Omega hospitals has a great team of professionals and doctors to
+                provide best treatment for any of the ailments.
               </div>
 
               <div className="absolute -left-5 bottom-16 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
-                Here is an application for you to book your doctor appointments
-                including appointments of Dr. Mohana Vamsy.
+                Omega hospitals specializes in cancer treatment. Dr. Ch Mohana
+                Vamsy who has more than 30 years of experience in cancer
+                treatment, is your go-to person for his opinion on treatment for
+                the cancer patient.
               </div>
 
               <div className="absolute -right-5 bottom-4 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
-                Omega hospitals has a great team of professionals and doctors to
-                provide best treatment for any of the ailments.
+                Here is an application for you to book your doctor appointments
+                including appointments of Dr. Ch Mohana Vamsy.
               </div>
             </div>
           </div>
