@@ -94,12 +94,12 @@ export default function CentresHyderabad() {
             data-aos-delay="100"
             className="lg:col-span-3 bg-white rounded-2xl shadow-md overflow-hidden p-7"
           >
-            <div className="relative h-85">
+            <div className="relative h-85 w-full flex items-center justify-center overflow-hidden">
               <Image
                 src={activeCentre.image}
                 alt={activeCentre.name}
                 fill
-                className="object-cover rounded-2xl"
+                className="object-cover object-center rounded-2xl"
               />
             </div>
 
@@ -127,16 +127,16 @@ export default function CentresHyderabad() {
 
               <hr className="my-6" />
 
-              <div className="flex flex-wrap gap-4">
-                <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md font-medium">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+                <button className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md font-medium text-center">
                   Book a Free Consultation
                 </button>
 
-                <button className="border border-purple-700 text-purple-700 px-6 py-2 rounded-md font-medium hover:bg-purple-50">
+                <button className="w-full sm:w-auto border border-purple-700 text-purple-700 px-6 py-2 rounded-md font-medium hover:bg-purple-50 text-center">
                   Call Us
                 </button>
 
-                <button className="border border-purple-700 text-purple-700 px-6 py-2 rounded-md font-medium hover:bg-purple-50">
+                <button className="w-full sm:w-auto border border-purple-700 text-purple-700 px-6 py-2 rounded-md font-medium hover:bg-purple-50 text-center">
                   Get Directions
                 </button>
               </div>
