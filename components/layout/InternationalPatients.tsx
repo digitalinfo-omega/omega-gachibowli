@@ -15,18 +15,18 @@ import {
 
 export default function InternationalPatients() {
   return (
-    <section className="py-24 bg-white">
+    <section className="md:py-20 py-10 bg-white">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* LEFT PEACH BLOCK (SINGLE SHAPE) */}
-          <div className="relative bg-[#FFF5EC] rounded-[28px] px-12 pt-12 pb-14">
+          <div className="relative bg-[#FFF5EC] rounded-[28px] p-5">
             {/* Title (INSIDE SHAPE – TOP LEFT) */}
-            <h2 className="heading text-[#2F343B] leading-tight mb-10 max-w-60">
+            <h2 className="relative z-10 heading text-[#2F343B] leading-tight mb-10 max-w-60">
               International <br /> Patients
             </h2>
 
             {/* Badge (INSIDE SHAPE – TOP RIGHT) */}
-            <div className="absolute top-8 right-8 bg-accent rounded-full px-2 py-3 flex items-center gap-2 text-white xs-para">
+            <div className="absolute top-8 right-8 bg-accent rounded-full px-2 py-2 flex items-center gap-2 text-white xs-para">
               <span className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-accent">
                 ☎
               </span>
@@ -52,8 +52,8 @@ export default function InternationalPatients() {
             </div>
 
             {/* LEFT NOTCH ILLUSION */}
-            <div className="absolute -left-8 top-20 w-16 h-28 bg-white rounded-r-[24px]" />
-            <div className="absolute -left-8 bottom-16 w-16 h-28 bg-white rounded-r-[24px]" />
+            <div className="absolute left-0 top-0 w-55 h-16 bg-white rounded-br-[24px]" />
+            <div className="absolute left-0 top-14 w-40 h-16 bg-white rounded-br-[24px]" />
           </div>
 
           {/* RIGHT IMAGE */}
@@ -78,7 +78,7 @@ export default function InternationalPatients() {
 function Service({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="w-10 h-10 p-2 border border-accent rounded-md flex items-center justify-center text-accent">
+      <div className="w-10 h-10 flex items-center justify-center text-accent">
         {icon}
       </div>
       <span className="leading-snug">{label}</span>

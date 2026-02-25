@@ -59,7 +59,7 @@ export default function RootLayout({
           {/* <RequestCallbackSection /> */}
           <Emergency />
           <Footer />
-          <BookAppointment />
+          {/* <BookAppointment /> */}
           <MobileBottomNav />
         </ReactQueryProvider>
       </body>
