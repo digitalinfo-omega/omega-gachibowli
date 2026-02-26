@@ -153,12 +153,14 @@ export default function CancerCentresCarousel() {
         >
           {/* Left Content */}
           <div className="min-h-126.5 lg:min-h-96.25 flex flex-col justify-between">
-            <h3 className="para text-secondary font-semibold mb-2">
+            <h3 className="para text-secondary font-semibold mb-2 md:text-start text-center">
               {active.title}
             </h3>
-            <p className="sm-para mb-6">{active.subtitle}</p>
+            <p className="sm-para mb-6 md:text-start text-center">
+              {active.subtitle}
+            </p>
 
-            <div className="grid sm:grid-cols-2 gap-6 sm-para">
+            <div className="grid sm:grid-cols-2 gap-6 sm-para md:justify-start justify-center">
               <ul className="list-disc pl-5 space-y-2">
                 {active.leftPoints.map((p, i) => (
                   <li key={i}>{p}</li>
@@ -172,7 +174,7 @@ export default function CancerCentresCarousel() {
               </ul>
             </div>
 
-            <div>
+            <div className="flex md:justify-start justify-center">
               <button className="mt-8 bg-accent text-white px-6 py-3 rounded-full flex items-center gap-2 xs-para">
                 Explore {active.title}
                 <span className="w-5 h-5 rounded-full border border-white flex items-center justify-center">

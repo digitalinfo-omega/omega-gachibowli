@@ -6,7 +6,7 @@ export default function LeadershipSection() {
   return (
     <section className="bg-white md:py-20 py-10">
       <div className="container">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-16 gap-8 items-center">
           <div className="flex justify-center">
             <div className="w-65 h-65 rounded-full bg-[#FFF1E6] flex items-center justify-center">
               <div className="w-50 h-50 rounded-full bg-white flex flex-col items-center justify-center text-center">

@@ -110,8 +110,10 @@ function Card({
         {icon}
       </div>
 
-      <h3 className="para text-white mb-4">{title}</h3>
-      <p className="sm-para text-white/70">{desc}</p>
+      <h3 className="para text-white mb-4 md:text-start text-center">
+        {title}
+      </h3>
+      <p className="sm-para text-white/70 md:text-start text-center">{desc}</p>
     </div>
   );
 }

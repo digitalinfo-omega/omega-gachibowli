@@ -71,14 +71,18 @@ export default function MedicalSpecialities() {
   }, [active]);
 
   const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const { current } = scrollRef;
-      const scrollAmount = 250;
-      current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
+    if (!scrollRef.current) return;
+
+    const container = scrollRef.current;
+    const tab = container.children[0] as HTMLElement;
+    if (!tab) return;
+
+    const tabWidth = tab.offsetWidth;
+
+    container.scrollBy({
+      left: direction === "left" ? -tabWidth : tabWidth,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -98,14 +102,14 @@ export default function MedicalSpecialities() {
 
           <div
             ref={scrollRef}
-            className="flex overflow-x-auto w-full border border-gray-200 scrollbar-hide snap-x"
+            className="flex overflow-hidden w-full  relative touch-none"
           >
             {TABS.map((tab, i) => (
               <button
                 key={tab.name}
                 onClick={() => setActive(i)}
-                className={`min-w-[150px] sm:min-w-[200px] flex flex-col items-center justify-center gap-3 py-8 border-r border-gray-200 xs-para shrink-0 snap-start
-                  ${active === i ? "bg-secondary text-white" : "bg-white text-black"}`}
+                className={`relative min-w-[150px] border border-gray-200 sm:min-w-[200px] flex flex-col items-center justify-center gap-3 py-8 border-r border-gray-200 xs-para shrink-0 snap-start
+  ${active === i ? "bg-secondary text-white" : "bg-white text-black"}`}
               >
                 <div
                   className={`w-16 h-16 rounded-full flex items-center justify-center ${active === i ? "bg-white text-secondary" : "bg-gray-300 text-gray-500"}`}
@@ -114,7 +118,7 @@ export default function MedicalSpecialities() {
                 </div>
                 <span className="text-center">{tab.name}</span>
                 {active === i && (
-                  <span className="absolute -bottom-4 w-0 h-0 border-l-[14px] border-l-transparent border-r-[14px] border-r-transparent border-t-[14px] border-t-secondary" />
+                  <span className="absolute left-1/2 -translate-x-1/2 -bottom-[14px] w-0 h-0 border-l-[14px] border-l-transparent border-r-[14px] border-r-transparent border-t-[14px] border-t-secondary" />
                 )}
               </button>
             ))}

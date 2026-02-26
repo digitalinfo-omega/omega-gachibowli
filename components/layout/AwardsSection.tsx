@@ -5,13 +5,15 @@ export default function AwardsSection() {
     <div className="bg-secondary/10 py-10 md:py-20">
       <div className="container">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
-          <h2 className="heading font-bold text-[#0a3d62]">
+          <h2 className="heading font-bold text-[#0a3d62] md:text-start text-center">
             Awards & Accolades
           </h2>
-          <button className="mt-6 md:mt-0 flex items-center gap-2 bg-[#00a0df] text-white px-6 py-3 rounded-full font-medium hover:bg-[#0088bf] transition">
-            <Trophy size={20} />
-            LEARN MORE
-          </button>
+          <div className="flex justify-center md:justify-start">
+            <button className="mt-6 md:mt-0 flex items-center gap-2 bg-[#00a0df] text-white px-6 py-3 rounded-full font-medium hover:bg-[#0088bf] transition">
+              <Trophy size={20} />
+              LEARN MORE
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

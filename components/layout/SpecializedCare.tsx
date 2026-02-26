@@ -136,9 +136,9 @@ export default function SpecializedCare() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="bg-[#0B0F14] py-28">
+    <section className="bg-[#0B0F14] py-10 md:py-20">
       <div className="container">
-        <div className="text-center mb-20">
+        <div className="text-center md:mb-20 mb-10">
           <p
             data-aos="fade-up"
             data-aos-duration="1000"
@@ -157,7 +157,7 @@ export default function SpecializedCare() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] md:gap-12 gap-6">
           <div className="space-y-3">
             {TABS.map((tab, i) => (
               <div
@@ -182,7 +182,7 @@ export default function SpecializedCare() {
             {TABS[active].cards.map((card, idx) => (
               <div
                 key={card.title}
-                className="border border-white/10 p-10 text-white min-h-105 flex flex-col"
+                className="border border-white/10 p-10 text-white md:min-h-105 min-h-70 flex flex-col"
                 data-aos="fade-up"
                 data-aos-duration="1000"
                 data-aos-delay={idx * 200}
@@ -191,7 +191,7 @@ export default function SpecializedCare() {
                 <p className="sm-para text-[#8B97A7] mb-10 leading-relaxed">
                   {card.desc}
                 </p>
-                <span className="mt-auto text-accent xs-para">{card.cta}</span>
+                <span className="mt-auto text-accent sm-para">{card.cta}</span>
               </div>
             ))}
           </div>

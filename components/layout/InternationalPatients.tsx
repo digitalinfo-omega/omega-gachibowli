@@ -19,13 +19,13 @@ export default function InternationalPatients() {
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* LEFT PEACH BLOCK (SINGLE SHAPE) */}
-          <div className="relative bg-[#FFF5EC] rounded-[28px] p-6 md:p-12">
+          <div className="relative bg-[#FFF5EC] rounded-[28px] p-6">
             {/* Flex container to ensure proper vertical flow on mobile */}
             <div className="flex flex-col gap-8">
               {/* Heading & Badge Container */}
-              <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-                <h2 className="heading text-[#2F343B] leading-tight">
-                  International <br /> Patients
+              <div className="flex flex-col sm:flex-row justify-between md:items-start items-center gap-4">
+                <h2 className="relative z-10 heading text-[#2F343B] leading-tight md:mb-5 max-w-60">
+                  International Patients
                 </h2>
 
                 {/* Badge - Adjusted for better mobile flow */}
@@ -38,7 +38,7 @@ export default function InternationalPatients() {
               </div>
 
               {/* Services Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 md:gap-8 gap-3">
                 <Service icon={<FileText />} label="Registration Process" />
                 <Service icon={<ClipboardCheck />} label="Document Process" />
                 <Service icon={<Home />} label="Food and Accommodation" />
@@ -55,12 +55,15 @@ export default function InternationalPatients() {
                 />
                 <Service icon={<MapPin />} label="Planning To Revisit" />
               </div>
+              {/* LEFT NOTCH ILLUSION */}
+              <div className="absolute left-0 top-0 w-55 h-16 bg-white rounded-br-[24px] hidden md:block" />
+              <div className="absolute left-0 top-14 w-40 h-16 bg-white rounded-br-[24px] hidden md:block" />
             </div>
           </div>
 
           {/* RIGHT IMAGE */}
           <div className="relative flex justify-center">
-            <div className="relative w-75 h-75 md:w-102 md:h-103 rounded-full bg-[#FFF5EC] flex items-center justify-center">
+            <div className="relative w-83 h-83 md:w-102 md:h-103 rounded-full bg-[#FFF5EC] flex items-center justify-center">
               <Image
                 src="/images/international.webp"
                 alt="International Patients"
@@ -79,7 +82,7 @@ export default function InternationalPatients() {
 
 function Service({ icon, label }: { icon: React.ReactNode; label: string }) {
   return (
-    <div className="flex items-start gap-4">
+    <div className="flex md:items-start items-center gap-4">
       <div className="w-10 h-10 flex items-center justify-center text-accent">
         {icon}
       </div>

@@ -81,13 +81,13 @@ export default function CentresHyderabad() {
         <h2
           data-aos="fade-up"
           data-aos-duration="1000"
-          className="heading font-medium mb-10"
+          className="heading font-medium mb-10 md:text-start text-center"
         >
           Omega Hospitals{" "}
           <span className="text-purple-700">Centres in Hyderabad</span>
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-10 gap-5">
           <div
             data-aos="fade-up"
             data-aos-duration="800"
@@ -121,7 +121,7 @@ export default function CentresHyderabad() {
                 </div>
               </div>
 
-              <p className="mt-3 text-gray-600 text-sm max-w-xl">
+              <p className="mt-3 text-gray-600 text-sm max-w-xl md:text-start text-center">
                 {activeCentre.description}
               </p>
 
