@@ -10,6 +10,7 @@ import MedicalSpecialities from "@/components/layout/MedicalSpecialities";
 import ModernMachine from "@/components/layout/ModernMachine";
 import NextStepHealth from "@/components/layout/NextStepHealth";
 import SpecializedCare from "@/components/layout/SpecializedCare";
+import { StandalonePopupExample } from "@/components/layout/StandalonePopupExample";
 import SurvivorCarousel from "@/components/layout/SurvivorCarousel";
 import WhyChooseOmega from "@/components/layout/WhyChooseOmega";
 
@@ -25,6 +26,7 @@ export default function HomePage() {
       <SurvivorCarousel />
       <InternationalPatients />
       <SpecializedCare />
+      <StandalonePopupExample />
       <CentresInHyderabad />
       <HealthcareAppSection />
       <LeadershipSection />

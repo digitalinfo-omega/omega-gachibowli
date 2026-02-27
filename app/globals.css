@@ -160,6 +160,12 @@
   body {
     @apply bg-background text-foreground font-sans md:pb-0 pb-12 scroll-smooth;
   }
+  .maplibregl-popup-content {
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
+  }
+  .maplibregl-popup-tip {
+    @apply hidden!;
+  }
 }
 
 @keyframes accordion-down {
