@@ -171,11 +171,11 @@ const places = [
 export function StandalonePopupExample() {
   return (
     <div className="h-[500px] w-full">
-      <Map center={[-73.98, 40.74]} zoom={11}>
+      <Map center={[72.8311, 21.1702]} zoom={11}>
         {places.map((place) => (
           <MapMarker key={place.id} longitude={place.lng} latitude={place.lat}>
             <MarkerContent>
-              <div className="size-5 rounded-full bg-rose-500 border-2 border-white shadow-lg cursor-pointer hover:scale-110 transition-transform" />
+              <div className="size-5 rounded-full bg-accent border-2 border-white shadow-lg cursor-pointer hover:scale-110 transition-transform" />
               <MarkerLabel position="bottom">{place.label}</MarkerLabel>
             </MarkerContent>
             <MarkerPopup className="p-0 w-62">
@@ -198,7 +198,7 @@ export function StandalonePopupExample() {
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <div className="flex items-center gap-1">
-                    <Star className="size-3.5 fill-amber-400 text-amber-400" />
+                    <Star className="size-3.5 fill-accent text-accent" />
                     <span className="font-medium">{place.rating}</span>
                     <span className="text-muted-foreground">
                       ({place.reviews.toLocaleString()})
