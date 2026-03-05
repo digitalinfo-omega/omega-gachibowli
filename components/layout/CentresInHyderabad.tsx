@@ -76,7 +76,7 @@ export default function CentresHyderabad() {
   );
 
   return (
-    <section className="py-10 md:py-20 bg-accent/10">
+    <section className="py-10 md:py-20 bg-accent/5">
       <div className="container">
         <h2
           data-aos="fade-up"
@@ -84,7 +84,7 @@ export default function CentresHyderabad() {
           className="heading font-medium mb-10 md:text-start text-center"
         >
           Omega Hospitals{" "}
-          <span className="text-purple-700">Centres in Hyderabad</span>
+          <span className="text-accent">Centres in Hyderabad</span>
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-10 gap-5">
@@ -105,13 +105,13 @@ export default function CentresHyderabad() {
 
             <div className="p-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-semibold text-purple-700">
+                <h3 className="text-2xl font-semibold text-accent">
                   {activeCentre.name}
                 </h3>
 
                 <div className="flex items-center gap-1 text-sm">
                   {"★★★★★".split("").map((_, i) => (
-                    <span key={i} className="text-orange-400">
+                    <span key={i} className="text-accent">
                       ★
                     </span>
                   ))}
@@ -128,15 +128,15 @@ export default function CentresHyderabad() {
               <hr className="my-6" />
 
               <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-                <button className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md font-medium text-center">
+                <button className="w-full sm:w-auto bg-accent hover:bg-accent/70 text-white px-6 py-2 rounded-md font-medium text-center">
                   Book a Free Consultation
                 </button>
 
-                <button className="w-full sm:w-auto border border-purple-700 text-purple-700 px-6 py-2 rounded-md font-medium hover:bg-purple-50 text-center">
+                <button className="w-full sm:w-auto border border-accent text-accent px-6 py-2 rounded-md font-medium hover:bg-purple-50 text-center">
                   Call Us
                 </button>
 
-                <button className="w-full sm:w-auto border border-purple-700 text-purple-700 px-6 py-2 rounded-md font-medium hover:bg-purple-50 text-center">
+                <button className="w-full sm:w-auto border border-accent text-accent px-6 py-2 rounded-md font-medium hover:bg-purple-50 text-center">
                   Get Directions
                 </button>
               </div>
@@ -159,8 +159,8 @@ export default function CentresHyderabad() {
                   className={`w-full xl-para text-left px-4 py-2 rounded-md transition
                   ${
                     isActive
-                      ? "bg-purple-700 text-white font-semibold"
-                      : "text-pink-300 hover:text-purple-700"
+                      ? "bg-accent text-white font-semibold"
+                      : "text-accent/50 hover:text-accent"
                   }`}
                 >
                   {centre.name}

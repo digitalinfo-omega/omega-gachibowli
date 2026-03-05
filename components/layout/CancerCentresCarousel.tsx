@@ -101,7 +101,7 @@ export default function CancerCentresCarousel() {
           src="/images/cancer-centre/background.webp"
           alt="background"
           fill
-          className="object-cover opacity-50"
+          className="object-cover opacity-10"
           priority
         />
       </div>

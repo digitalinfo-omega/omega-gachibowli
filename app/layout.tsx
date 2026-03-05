@@ -6,13 +6,10 @@ import localFont from "next/font/local";
 import Footer from "@/components/layout/Footer";
 import AOSProvider from "@/components/providers/AOSProvider";
 import MobileBottomNav from "@/components/layout/MobileBottomNav";
-import BookAppointment from "@/components/layout/BookAppointment";
 import Emergency from "@/components/layout/Emergency";
-import RequestCallbackSection from "@/components/layout/RequestCallbackSection";
 import { Toaster } from "sonner";
 import { QueryClient } from "@tanstack/react-query";
 import ReactQueryProvider from "@/components/providers/ReactQueryProvider";
-import ModernMachine from "@/components/layout/ModernMachine";
 
 const satoshi = localFont({
   src: [
@@ -37,7 +34,8 @@ const satoshi = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Omega Hospitals Endocrinology",
+  title:
+    "Omega Hospitals Gachibowli - Leading Cancer & Multispecialty Hospital in Hyderabad",
   description:
     "Leading cancer & multispecialty hospital in Surat with AI-powered treatment, expert oncologists, 24/7 emergency care. Book appointment: 0261-226-5552",
 };

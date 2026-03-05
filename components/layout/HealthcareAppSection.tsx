@@ -1,10 +1,11 @@
 "use client";
 
+import { Box } from "lucide-react";
 import Image from "next/image";
 
 export default function HealthcareAppSection() {
   return (
-    <section className="relative bg-[#0E1116] md:py-20 py-10">
+    <section className="relative bg-secondary/3 md:py-20 py-10">
       <div className="container">
         <div className="border-t border-t-accent rounded-2xl px-5 py-5 md:px-10 md:py-14">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-center md:gap-5 gap-10">
@@ -13,7 +14,7 @@ export default function HealthcareAppSection() {
                 DOWNLOAD OUR APP
               </p>
 
-              <h2 className="heading font-serif text-white leading-tight">
+              <h2 className="heading font-serif text-black/90 leading-tight">
                 Healthcare at Your{" "}
                 <span className="text-accent">Fingertips</span>
               </h2>
@@ -23,7 +24,7 @@ export default function HealthcareAppSection() {
                 All in One App
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mt-8 text-sm text-gray-300">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mt-8 text-sm text-black/70">
                 <div className="flex items-center gap-3">
                   <span className="text-accent">✔</span>
                   Easy online appointment booking
@@ -52,10 +53,10 @@ export default function HealthcareAppSection() {
 
               <div className="flex flex-wrap gap-4 mt-10 justify-center md:justify-start">
                 <button className="bg-accent text-black px-6 py-3 rounded-md font-medium flex items-center gap-2">
-                   App Store
+                  <Box /> App Store
                 </button>
                 <button className="border border-accent text-accent px-6 py-3 rounded-md font-medium flex items-center gap-2">
-                  ▶ Google Play
+                  <Box /> Google Play
                 </button>
               </div>
             </div>
@@ -70,19 +71,19 @@ export default function HealthcareAppSection() {
                 priority
               />
 
-              <div className="absolute -right-10 top-10 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-55 shadow-lg">
+              <div className="absolute right-0 top-10 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
                 Omega hospitals has a great team of professionals and doctors to
                 provide best treatment for any of the ailments.
               </div>
 
-              <div className="absolute -left-5 bottom-16 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
+              <div className="absolute left-0 bottom-16 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
                 Omega hospitals specializes in cancer treatment. Dr. Ch Mohana
                 Vamsy who has more than 30 years of experience in cancer
                 treatment, is your go-to person for his opinion on treatment for
                 the cancer patient.
               </div>
 
-              <div className="absolute -right-5 bottom-4 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
+              <div className="absolute right-0 bottom-4 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
                 Here is an application for you to book your doctor appointments
                 including appointments of Dr. Ch Mohana Vamsy.
               </div>

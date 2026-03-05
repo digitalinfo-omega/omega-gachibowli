@@ -4,7 +4,7 @@ import { Check, Building2, Users, Cpu, ShieldCheck, Globe } from "lucide-react";
 
 export default function WhyChooseOmega() {
   return (
-    <section className="relative bg-[#0b0f14] py-10 md:py-20">
+    <section className="relative bg-accent/3 py-10 md:py-20">
       <div className="container">
         {/* Top Label */}
         <p
@@ -20,7 +20,7 @@ export default function WhyChooseOmega() {
           data-aos="fade-up"
           data-aos-duration="1000"
           data-aos-delay="200"
-          className="heading text-center text-white mb-16"
+          className="heading text-center text-black mb-16"
         >
           Why 13+ Lakh Patients{" "}
           <span className="text-accent italic">Trusted</span> Omega
@@ -100,20 +100,24 @@ function Card({
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-delay={idx * 200}
-      className={`relative p-8 border rounded-md bg-transparent transition-colors duration-300
+      className={`group relative p-8 border rounded-md bg-transparent
     ${
-      highlight ? "border-accent/60" : "border-white/10 hover:border-accent/60"
+      highlight
+        ? "border-accent/60"
+        : "border-black/20 hover:border-accent/60 hover:bg-accent transition-colors duration-300"
     }`}
     >
       {/* Icon */}
-      <div className="w-10 h-10 border border-accent flex items-center justify-center text-accent mb-6">
+      <div className="w-10 h-10 border border-accent group-hover:border-white group-hover:text-white flex items-center justify-center text-accent mb-6">
         {icon}
       </div>
 
-      <h3 className="para text-white mb-4 md:text-start text-center">
+      <h3 className="para text-black/90 group-hover:text-white mb-4 md:text-start text-center">
         {title}
       </h3>
-      <p className="sm-para text-white/70 md:text-start text-center">{desc}</p>
+      <p className="sm-para text-black/90/70 group-hover:text-white md:text-start text-center">
+        {desc}
+      </p>
     </div>
   );
 }
@@ -121,7 +125,7 @@ function Card({
 function Stat({ label, idx }: { label: string; idx: number }) {
   return (
     <div
-      className="flex items-center gap-3 px-6 py-4 border border-accent/40 rounded-md text-white xs-para"
+      className="flex items-center gap-3 px-6 py-4 border border-accent/40 rounded-md text-black/90 xs-para"
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-delay={(idx ?? 0) * 200}

@@ -1,22 +1,54 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-const images = [
-  "/images/cancer-centre/cancer-img1.webp",
-  "/images/cancer-centre/cancer-img1.webp",
-  "/images/cancer-centre/cancer-img1.webp",
-  "/images/cancer-centre/cancer-img1.webp",
-  "/images/cancer-centre/cancer-img1.webp",
-  "/images/cancer-centre/cancer-img1.webp",
-  "/images/cancer-centre/cancer-img1.webp",
+const videos = [
+  {
+    src: "/images/videos/1.mp4",
+    desc: "Beating cancer was the toughest battle of my life. Omega gave me hope again.",
+  },
+  {
+    src: "/images/videos/2.mp4",
+    desc: "The doctors supported me through every step of treatment and recovery.",
+  },
+  {
+    src: "/images/videos/3.mp4",
+    desc: "From diagnosis to recovery, Omega Hospitals stood beside me.",
+  },
+  {
+    src: "/images/videos/1.mp4",
+    desc: "Their advanced treatment and compassionate care saved my life.",
+  },
+  {
+    src: "/images/videos/2.mp4",
+    desc: "I found strength through the care and support of the Omega team.",
+  },
+  {
+    src: "/images/videos/3.mp4",
+    desc: "A journey of courage, care, and recovery with Omega Hospitals.",
+  },
 ];
 
 export default function SurvivorCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
-  const length = images.length;
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const length = videos.length;
+
+  useEffect(() => {
+    videoRefs.current.forEach((video, index) => {
+      if (!video) return;
+
+      if (index === activeIndex) {
+        video.muted = false;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+        video.currentTime = 0;
+        video.muted = true;
+      }
+    });
+  }, [activeIndex]);
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % length);
@@ -29,11 +61,8 @@ export default function SurvivorCarousel() {
   const getItemStyle = (index: number) => {
     let offset = (index - activeIndex) % length;
 
-    if (offset > Math.floor(length / 2)) {
-      offset -= length;
-    } else if (offset < -Math.floor(length / 2)) {
-      offset += length;
-    }
+    if (offset > Math.floor(length / 2)) offset -= length;
+    else if (offset < -Math.floor(length / 2)) offset += length;
 
     const absOffset = Math.abs(offset);
     const sign = Math.sign(offset);
@@ -62,6 +91,7 @@ export default function SurvivorCarousel() {
   return (
     <div className="w-full overflow-hidden bg-white py-10 md:py-20">
       <div className="container">
+        {/* Heading */}
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Survivor Stories
@@ -71,46 +101,60 @@ export default function SurvivorCarousel() {
           </p>
         </div>
 
-        <div className="relative flex items-center justify-center h-75 sm:h-100 md:h-125">
+        <div className="relative flex items-center justify-center h-[520px]">
+          {/* LEFT BUTTON */}
           <button
             onClick={handlePrev}
-            className="absolute left-0 md:left-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent shadow-xl text-white hover:bg-accent/85 cursor-pointer transition-all duration-300"
-            aria-label="Previous slide"
+            className="absolute left-0 md:left-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent shadow-xl text-white hover:bg-accent/85"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
 
-          <div className="relative w-full max-w-70 sm:max-w-90 md:max-w-110 h-full flex items-center justify-center">
-            {images.map((src, index) => (
+          {/* CAROUSEL */}
+          <div className="relative w-full max-w-[300px] h-full flex items-center justify-center">
+            {videos.map((video, index) => (
               <div
                 key={index}
                 className="absolute w-full h-full transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
                 style={getItemStyle(index)}
               >
-                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-accent">
-                  <Image
-                    src={src}
-                    alt={`Survivor story ${index + 1}`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    priority={
-                      Math.abs((index - activeIndex) % length) <= 1 ||
-                      Math.abs((index - activeIndex) % length) === length - 1
-                    }
+                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-black">
+                  {index === activeIndex && (
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
+                  )}
+                  <video
+                    ref={(el) => {
+                      videoRefs.current[index] = el;
+                    }}
+                    src={video.src}
+                    muted
+                    loop
+                    playsInline
+                    controls={index === activeIndex}
+                    className={`w-full h-full object-cover transition-all duration-500 ${
+                      index === activeIndex
+                        ? "scale-100"
+                        : "scale-105 brightness-75 blur-[1px]"
+                    }`}
                   />
                   {index !== activeIndex && (
-                    <div className="absolute inset-0 bg-black/20 transition-opacity duration-500" />
+                    <div className="absolute inset-x-0 bottom-0 p-4">
+                      <div className="rounded-xl backdrop-blur-md bg-black/40 border border-white/10 px-4 py-3 shadow-lg">
+                        <p className="text-white text-sm leading-snug line-clamp-2 font-medium">
+                          {video.desc}
+                        </p>
+                      </div>
+                    </div>
                   )}
                 </div>
               </div>
             ))}
           </div>
 
+          {/* RIGHT BUTTON */}
           <button
             onClick={handleNext}
-            className="absolute right-0 md:right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent shadow-xl text-white hover:bg-accent/85 cursor-pointer transition-all duration-300"
-            aria-label="Next slide"
+            className="absolute right-0 md:right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent shadow-xl text-white hover:bg-accent/85"
           >
             <ChevronRight className="h-6 w-6" />
           </button>

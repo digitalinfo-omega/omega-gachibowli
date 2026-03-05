@@ -1,7 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Heart, Brain, Stethoscope, Venus, Bone, Siren } from "lucide-react";
+import {
+  Heart,
+  Brain,
+  Stethoscope,
+  Venus,
+  Bone,
+  Siren,
+  ArrowRight,
+} from "lucide-react";
 
 const TABS = [
   {
@@ -11,17 +19,17 @@ const TABS = [
       {
         title: "Cardiology",
         desc: "Prevent, diagnose & manage heart disease with advanced imaging, interventional care & rehabilitation.",
-        cta: "Book Cardiologist →",
+        cta: "Book Cardiologist",
       },
       {
         title: "Cardiothoracic Surgery",
         desc: "Minimally invasive & open-heart surgery for complex cardiac conditions with excellent outcomes.",
-        cta: "Consult CT Surgeon →",
+        cta: "Consult CT Surgeon",
       },
       {
         title: "Vascular Surgery",
         desc: "Advanced treatment for varicose veins, aneurysms & vascular blockages with precision techniques.",
-        cta: "Vascular Consultation →",
+        cta: "Vascular Consultation",
       },
     ],
   },
@@ -32,17 +40,17 @@ const TABS = [
       {
         title: "Neurology",
         desc: "Advanced diagnosis and treatment of neurological disorders with precision care.",
-        cta: "Consult Neurologist →",
+        cta: "Consult Neurologist",
       },
       {
         title: "Neurosurgery",
         desc: "Minimally invasive and complex brain & spine surgeries with expert outcomes.",
-        cta: "Consult Neurosurgeon →",
+        cta: "Consult Neurosurgeon",
       },
       {
         title: "Spine Care",
         desc: "Comprehensive spine care including surgical and non-surgical treatments.",
-        cta: "Spine Consultation →",
+        cta: "Spine Consultation",
       },
     ],
   },
@@ -53,17 +61,17 @@ const TABS = [
       {
         title: "Gastroenterology",
         desc: "Complete digestive system care with advanced diagnostics and interventions.",
-        cta: "Consult Gastroenterologist →",
+        cta: "Consult Gastroenterologist",
       },
       {
         title: "GI Surgery",
         desc: "Advanced laparoscopic and open GI surgeries for complex conditions.",
-        cta: "GI Surgery Consultation →",
+        cta: "GI Surgery Consultation",
       },
       {
         title: "Liver Care",
         desc: "Specialized treatment for liver diseases and disorders.",
-        cta: "Liver Consultation →",
+        cta: "Liver Consultation",
       },
     ],
   },
@@ -74,17 +82,17 @@ const TABS = [
       {
         title: "Gynecology",
         desc: "Comprehensive women’s healthcare across all life stages.",
-        cta: "Consult Gynecologist →",
+        cta: "Consult Gynecologist",
       },
       {
         title: "Obstetrics",
         desc: "Advanced maternity care with expert monitoring and delivery services.",
-        cta: "Book Obstetrician →",
+        cta: "Book Obstetrician",
       },
       {
         title: "Breast Care",
         desc: "Specialized diagnosis and treatment for breast health conditions.",
-        cta: "Breast Consultation →",
+        cta: "Breast Consultation",
       },
     ],
   },
@@ -95,17 +103,17 @@ const TABS = [
       {
         title: "Joint Replacement",
         desc: "Advanced knee and hip replacement surgeries for improved mobility.",
-        cta: "Joint Consultation →",
+        cta: "Joint Consultation",
       },
       {
         title: "Sports Medicine",
         desc: "Injury prevention and recovery for active lifestyles.",
-        cta: "Sports Consultation →",
+        cta: "Sports Consultation",
       },
       {
         title: "Spine Orthopedics",
         desc: "Orthopedic spine treatments with precision techniques.",
-        cta: "Ortho Spine Consultation →",
+        cta: "Ortho Spine Consultation",
       },
     ],
   },
@@ -116,17 +124,17 @@ const TABS = [
       {
         title: "Emergency Medicine",
         desc: "24/7 emergency response with rapid diagnosis and treatment.",
-        cta: "Emergency Care →",
+        cta: "Emergency Care",
       },
       {
         title: "Critical Care",
         desc: "Advanced ICU care with continuous monitoring and expert teams.",
-        cta: "Critical Care →",
+        cta: "Critical Care",
       },
       {
         title: "Trauma Care",
         desc: "Comprehensive trauma management with immediate intervention.",
-        cta: "Trauma Support →",
+        cta: "Trauma Support",
       },
     ],
   },
@@ -136,7 +144,7 @@ export default function SpecializedCare() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="bg-[#0B0F14] py-10 md:py-20">
+    <section className="bg-accent/5 py-10 md:py-20">
       <div className="container">
         <div className="text-center md:mb-20 mb-10">
           <p
@@ -150,7 +158,7 @@ export default function SpecializedCare() {
             data-aos="fade-up"
             data-aos-duration="1000"
             data-aos-delay="200"
-            className="heading text-white"
+            className="heading text-black/90"
           >
             Specialized Care,{" "}
             <span className="text-accent italic">Tailored to You</span>
@@ -165,7 +173,7 @@ export default function SpecializedCare() {
                 onClick={() => setActive(i)}
                 className={`flex items-center gap-3 px-5 py-4 border cursor-pointer ${
                   active === i
-                    ? "bg-[#F3C56B] text-black border-[#F3C56B]"
+                    ? "bg-accent/30 text-black border-accent"
                     : "border-white/10 text-[#8B97A7]"
                 }`}
                 data-aos="fade-up"
@@ -182,7 +190,7 @@ export default function SpecializedCare() {
             {TABS[active].cards.map((card, idx) => (
               <div
                 key={card.title}
-                className="border border-white/10 p-10 text-white md:min-h-105 min-h-70 flex flex-col"
+                className="border border-accent/30 p-10 text-black/90 md:min-h-105 min-h-70 flex flex-col"
                 data-aos="fade-up"
                 data-aos-duration="1000"
                 data-aos-delay={idx * 200}
@@ -191,7 +199,15 @@ export default function SpecializedCare() {
                 <p className="sm-para text-[#8B97A7] mb-10 leading-relaxed">
                   {card.desc}
                 </p>
-                <span className="mt-auto text-accent sm-para">{card.cta}</span>
+                <div className="group hover:cursor-pointer mt-auto text-accent flex items-center gap-6">
+                  <span className="sm-para">{card.cta}</span>
+                  <span>
+                    <ArrowRight
+                      size={15}
+                      className="group-hover:translate-x-1 duration-300 transition-transform"
+                    />
+                  </span>
+                </div>
               </div>
             ))}
           </div>
