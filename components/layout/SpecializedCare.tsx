@@ -144,7 +144,7 @@ export default function SpecializedCare() {
   const [active, setActive] = useState(0);
 
   return (
-    <section className="bg-accent/5 py-10 md:py-20">
+    <section className="bg-secondary/5 py-10 md:py-20">
       <div className="container">
         <div className="text-center md:mb-20 mb-10">
           <p
@@ -173,8 +173,8 @@ export default function SpecializedCare() {
                 onClick={() => setActive(i)}
                 className={`flex items-center gap-3 px-5 py-4 border cursor-pointer ${
                   active === i
-                    ? "bg-accent/30 text-black border-accent"
-                    : "border-white/10 text-[#8B97A7]"
+                    ? "text-black border-accent"
+                    : "border-accent/10 text-[#8B97A7]"
                 }`}
                 data-aos="fade-up"
                 data-aos-duration="1000"
@@ -198,7 +198,7 @@ export default function SpecializedCare() {
                 <h3 className="group-hover:text-white para mb-6">
                   {card.title}
                 </h3>
-                <p className="group-hover:text-black sm-para text-[#8B97A7] mb-10 leading-relaxed">
+                <p className="group-hover:text-white sm-para text-gray-500 mb-10 leading-relaxed">
                   {card.desc}
                 </p>
                 <div className="group hover:cursor-pointer mt-auto text-accent flex items-center gap-6">

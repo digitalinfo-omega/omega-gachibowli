@@ -15,11 +15,11 @@ import {
 
 export default function InternationalPatients() {
   return (
-    <section className="md:py-20 py-10 bg-white">
+    <section className="md:py-20 py-10 bg-accent/10">
       <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* LEFT PEACH BLOCK (SINGLE SHAPE) */}
-          <div className="relative bg-[#FFF5EC] rounded-[28px] p-6">
+          <div className="relative bg-white rounded-[28px] p-6">
             {/* Flex container to ensure proper vertical flow on mobile */}
             <div className="flex flex-col gap-8">
               {/* Heading & Badge Container */}
@@ -55,15 +55,12 @@ export default function InternationalPatients() {
                 />
                 <Service icon={<MapPin />} label="Planning To Revisit" />
               </div>
-              {/* LEFT NOTCH ILLUSION */}
-              <div className="absolute left-0 top-0 w-55 h-16 bg-white rounded-br-[24px] hidden md:block" />
-              <div className="absolute left-0 top-14 w-40 h-16 bg-white rounded-br-[24px] hidden md:block" />
             </div>
           </div>
 
           {/* RIGHT IMAGE */}
           <div className="relative flex justify-center">
-            <div className="relative w-83 h-83 md:w-102 md:h-103 rounded-full bg-[#FFF5EC] flex items-center justify-center">
+            <div className="relative w-83 h-83 md:w-102 md:h-103 rounded-full bg-white flex items-center justify-center">
               <Image
                 src="/images/international.webp"
                 alt="International Patients"
