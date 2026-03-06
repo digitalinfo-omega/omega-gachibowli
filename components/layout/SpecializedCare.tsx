@@ -186,25 +186,29 @@ export default function SpecializedCare() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 duration-300">
             {TABS[active].cards.map((card, idx) => (
               <div
                 key={card.title}
-                className="border border-accent/30 p-10 text-black/90 md:min-h-105 min-h-70 flex flex-col"
+                className="group border hover:bg-accent duration-300 border-accent/30 p-10 text-black/90 md:min-h-105 min-h-70 flex flex-col"
                 data-aos="fade-up"
                 data-aos-duration="1000"
                 data-aos-delay={idx * 200}
               >
-                <h3 className="para mb-6">{card.title}</h3>
-                <p className="sm-para text-[#8B97A7] mb-10 leading-relaxed">
+                <h3 className="group-hover:text-white para mb-6">
+                  {card.title}
+                </h3>
+                <p className="group-hover:text-black sm-para text-[#8B97A7] mb-10 leading-relaxed">
                   {card.desc}
                 </p>
                 <div className="group hover:cursor-pointer mt-auto text-accent flex items-center gap-6">
-                  <span className="sm-para">{card.cta}</span>
+                  <span className="sm-para group-hover:text-white">
+                    {card.cta}
+                  </span>
                   <span>
                     <ArrowRight
                       size={15}
-                      className="group-hover:translate-x-1 duration-300 transition-transform"
+                      className="group-hover:translate-x-1 group-hover:text-white duration-300 transition-transform"
                     />
                   </span>
                 </div>

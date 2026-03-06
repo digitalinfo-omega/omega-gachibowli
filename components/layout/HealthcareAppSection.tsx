@@ -24,7 +24,7 @@ export default function HealthcareAppSection() {
                 All in One App
               </p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mt-8 text-sm text-black/70">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-8 mt-8 sm-para text-black/70">
                 <div className="flex items-center gap-3">
                   <span className="text-accent">✔</span>
                   Easy online appointment booking

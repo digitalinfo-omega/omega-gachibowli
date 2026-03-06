@@ -9,6 +9,8 @@ import {
   Baby,
   FlaskConical,
   Bone,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import gsap from "gsap";
 
@@ -73,7 +75,7 @@ const TABS = [
     cards: [
       {
         title: "Gynecology",
-        desc: "Comprehensive care for women’s reproductive health, menstrual disorders, and screenings.",
+        desc: "Comprehensive care for women's reproductive health, menstrual disorders, and screenings.",
       },
       {
         title: "Obstetrics",
@@ -121,12 +123,68 @@ const TABS = [
       },
     ],
   },
+  {
+    name: "Orthopedics 2",
+    icon: Bone,
+    cards: [
+      {
+        title: "Joint Replacement",
+        desc: "Advanced knee, hip, and shoulder replacement surgeries with faster recovery.",
+      },
+      {
+        title: "Sports Medicine",
+        desc: "Treatment for sports injuries including ligament tears and muscle damage.",
+      },
+      {
+        title: "Spine Surgery",
+        desc: "Minimally invasive procedures for spinal disorders, disc problems, and fractures.",
+      },
+    ],
+  },
+  {
+    name: "Orthopedics 3",
+    icon: Bone,
+    cards: [
+      {
+        title: "Joint Replacement",
+        desc: "Advanced knee, hip, and shoulder replacement surgeries with faster recovery.",
+      },
+      {
+        title: "Sports Medicine",
+        desc: "Treatment for sports injuries including ligament tears and muscle damage.",
+      },
+      {
+        title: "Spine Surgery",
+        desc: "Minimally invasive procedures for spinal disorders, disc problems, and fractures.",
+      },
+    ],
+  },
 ];
 
 export default function MedicalSpecialities() {
   const [active, setActive] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef(null);
+
+  const TAB_WIDTH_SM = 200;
+  const TAB_WIDTH_XS = 150;
+
+  const getTabWidth = () =>
+    typeof window !== "undefined" && window.innerWidth >= 640
+      ? TAB_WIDTH_SM
+      : TAB_WIDTH_XS;
+
+  const getVisibleCount = () => {
+    if (!containerRef.current) return 6;
+    return Math.floor(containerRef.current.offsetWidth / getTabWidth());
+  };
+
+  const getMaxOffset = () => Math.max(0, TABS.length - getVisibleCount());
+
+  const handlePrev = () => setOffset((prev) => Math.max(0, prev - 1));
+  const handleNext = () =>
+    setOffset((prev) => Math.min(getMaxOffset(), prev + 1));
 
   useEffect(() => {
     gsap.fromTo(
@@ -143,48 +201,65 @@ export default function MedicalSpecialities() {
           30+ Medical Specialties
         </h2>
 
-        {/* Wrapper: overflow-hidden only on x, but allow y overflow for the arrow */}
-        <div className="relative">
-          <div
-            ref={scrollRef}
-            className="flex w-full overflow-x-auto overflow-y-visible pb-6 touch-pan-x scrollbar-hide"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        <div className="relative flex items-center">
+          <button
+            onClick={handlePrev}
+            disabled={offset === 0}
+            className="absolute -left-4 md:-left-12 z-20 w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center shadow-lg disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
           >
-            {TABS.map((tab, i) => (
-              <button
-                key={tab.name}
-                onClick={() => setActive(i)}
-                className={`relative min-w-[150px] border border-gray-200 sm:min-w-[200px] flex flex-col items-center justify-center gap-3 py-8 border-r border-gray-200 xs-para shrink-0 snap-start
-                  ${active === i ? "bg-secondary text-white" : "bg-white text-black"}`}
-              >
-                <div
-                  className={`w-16 h-16 rounded-full flex items-center justify-center ${
-                    active === i
-                      ? "bg-white text-secondary"
-                      : "bg-gray-300 text-gray-500"
-                  }`}
-                >
-                  <tab.icon size={32} strokeWidth={1.5} />
-                </div>
-                <span className="text-center">{tab.name}</span>
+            <ChevronLeft size={20} />
+          </button>
 
-                {/* Down arrow - rendered outside overflow clip via absolute positioning */}
-                {active === i && (
-                  <span
-                    className="absolute left-1/2 -translate-x-1/2 z-10"
-                    style={{
-                      bottom: "-20px",
-                      width: 0,
-                      height: 0,
-                      borderLeft: "20px solid transparent",
-                      borderRight: "20px solid transparent",
-                      borderTop: "20px solid var(--color-secondary, #0d9488)",
-                    }}
-                  />
-                )}
-              </button>
-            ))}
+          <div ref={containerRef} className="w-full overflow-hidden pb-6">
+            <div
+              className="flex transition-transform duration-300 ease-in-out"
+              style={{
+                transform: `translateX(-${offset * getTabWidth()}px)`,
+              }}
+            >
+              {TABS.map((tab, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`relative min-w-[150px] border border-gray-200 sm:min-w-[200px] flex flex-col items-center justify-center gap-3 py-8 border-r border-gray-200 xs-para shrink-0
+                    ${active === i ? "bg-secondary text-white" : "bg-white text-black"}`}
+                >
+                  <div
+                    className={`w-16 h-16 rounded-full flex items-center justify-center ${
+                      active === i
+                        ? "bg-white text-secondary"
+                        : "bg-gray-300 text-gray-500"
+                    }`}
+                  >
+                    <tab.icon size={32} strokeWidth={1.5} />
+                  </div>
+                  <span className="text-center">{tab.name}</span>
+
+                  {active === i && (
+                    <span
+                      className="absolute left-1/2 -translate-x-1/2 z-10"
+                      style={{
+                        bottom: "-20px",
+                        width: 0,
+                        height: 0,
+                        borderLeft: "20px solid transparent",
+                        borderRight: "20px solid transparent",
+                        borderTop: "20px solid var(--color-secondary, #0d9488)",
+                      }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
+
+          <button
+            onClick={handleNext}
+            disabled={offset >= getMaxOffset()}
+            className="absolute -right-4 md:-right-12 z-20 w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center shadow-lg disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+          >
+            <ChevronRight size={20} />
+          </button>
         </div>
 
         <div

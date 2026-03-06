@@ -337,7 +337,7 @@ const ModernMachine = () => {
       </div>
 
       {/* DESKTOP DOTS - Only dots at bottom */}
-      <div className="hidden lg:flex py-12 lg:py-20 relative items-center justify-center">
+      <div className="hidden lg:flex py-10 lg:pt-15 relative items-center justify-center">
         <div className="flex space-x-2 z-20">
           {slides.map((_, i) => (
             <button

@@ -8,7 +8,25 @@ import {
   Pill,
   ClipboardCheck,
   AlertCircle,
+  ArrowRight,
 } from "lucide-react";
+
+const ACCENT_STYLES = {
+  accent: {
+    hover: "hover:bg-accent/20",
+    border: "bg-accent",
+    iconBg: "bg-accent/10",
+    iconText: "text-accent",
+    text: "text-accent",
+  },
+  secondary: {
+    hover: "hover:bg-secondary/20",
+    border: "bg-secondary",
+    iconBg: "bg-secondary/10",
+    iconText: "text-secondary",
+    text: "text-secondary",
+  },
+};
 
 export default function NextStepHealth() {
   return (
@@ -29,7 +47,7 @@ export default function NextStepHealth() {
           {TOP_ACTIONS.map((item, i) => (
             <button
               key={i}
-              className="flex items-center justify-center gap-2 border border-secondary/40 
+              className="group flex items-center justify-center gap-2 border border-secondary/40 
                          text-secondary px-4 py-3 rounded-md hover:bg-secondary/10 
                          transition xs-para"
               data-aos="fade-up"
@@ -38,6 +56,10 @@ export default function NextStepHealth() {
             >
               <item.icon size={18} />
               {item.label}
+              <ArrowRight
+                size={18}
+                className="group-hover:translate-x-1 duration-300"
+              />
             </button>
           ))}
         </div>
@@ -49,7 +71,7 @@ export default function NextStepHealth() {
             icon={Stethoscope}
             title="I've Been Diagnosed"
             desc="Get expert guidance within 24 hours. Connect with our oncology team for personalized treatment plans."
-            linkText="Schedule Consultation →"
+            linkText="Schedule Consultation"
             accent="accent"
             idx={0}
           />
@@ -59,7 +81,7 @@ export default function NextStepHealth() {
             icon={ClipboardCheck}
             title="I Need Screening"
             desc="Early detection saves lives. Explore our comprehensive cancer screening packages starting at ₹XXX."
-            linkText="View Health Packages →"
+            linkText="View Health Packages"
             accent="secondary"
             idx={1}
           />
@@ -69,7 +91,7 @@ export default function NextStepHealth() {
             icon={AlertCircle}
             title="Emergency Care"
             desc="24/7 cancer emergency services. Our team is ready when you need us most."
-            linkText="Emergency: 98490 22121 →"
+            linkText="Emergency: 98490 22121"
             accent="accent"
             idx={2}
           />
@@ -94,35 +116,43 @@ function Card({
   accent: "accent" | "secondary";
   idx: number;
 }) {
+  const styles = ACCENT_STYLES[accent];
+
   return (
     <div
       className={`border rounded-lg p-6 flex flex-col justify-between
-                  border-gray-200 relative overflow-hidden`}
+      border-gray-200 relative overflow-hidden ${styles.hover}`}
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-delay={idx * 300}
     >
       {/* Top Accent Line */}
-      <div className={`absolute top-0 left-0 h-0.75 w-full bg-${accent}`} />
+      <div
+        className={`absolute top-0 left-0 h-[3px] w-full ${styles.border}`}
+      />
 
       <div className="space-y-4">
         <div
           className={`w-10 h-10 rounded-lg flex items-center justify-center
-                      bg-${accent}/10 text-${accent}`}
+          ${styles.iconBg} ${styles.iconText}`}
         >
           <Icon size={20} />
         </div>
 
-        <h3 className={`para font-semibold text-${accent}`}>{title}</h3>
+        <h3 className={`para font-semibold ${styles.text}`}>{title}</h3>
 
         <p className="sm-para text-gray-600">{desc}</p>
       </div>
 
       <a
         href="#"
-        className={`mt-6 inline-block xl-para font-medium text-${accent}`}
+        className={`group mt-6 inline-flex items-center gap-2 xl-para font-medium ${styles.text}`}
       >
         {linkText}
+        <ArrowRight
+          size={18}
+          className="group-hover:translate-x-1 duration-300"
+        />
       </a>
     </div>
   );

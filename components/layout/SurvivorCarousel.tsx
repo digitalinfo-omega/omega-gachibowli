@@ -38,11 +38,7 @@ export default function SurvivorCarousel() {
   useEffect(() => {
     videoRefs.current.forEach((video, index) => {
       if (!video) return;
-
-      if (index === activeIndex) {
-        video.muted = false;
-        video.play().catch(() => {});
-      } else {
+      if (index !== activeIndex) {
         video.pause();
         video.currentTime = 0;
         video.muted = true;
@@ -50,17 +46,12 @@ export default function SurvivorCarousel() {
     });
   }, [activeIndex]);
 
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % length);
-  };
-
-  const handlePrev = () => {
+  const handleNext = () => setActiveIndex((prev) => (prev + 1) % length);
+  const handlePrev = () =>
     setActiveIndex((prev) => (prev - 1 + length) % length);
-  };
 
   const getItemStyle = (index: number) => {
     let offset = (index - activeIndex) % length;
-
     if (offset > Math.floor(length / 2)) offset -= length;
     else if (offset < -Math.floor(length / 2)) offset += length;
 
@@ -91,9 +82,8 @@ export default function SurvivorCarousel() {
   return (
     <div className="w-full overflow-hidden bg-white py-10 md:py-20">
       <div className="container">
-        {/* Heading */}
         <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-accent sm:text-4xl">
             Survivor Stories
           </h2>
           <p className="mt-4 text-xl text-gray-600">
@@ -101,63 +91,141 @@ export default function SurvivorCarousel() {
           </p>
         </div>
 
-        <div className="relative flex items-center justify-center h-[520px]">
-          {/* LEFT BUTTON */}
+        <div className="relative flex items-center justify-center h-[560px]">
           <button
             onClick={handlePrev}
-            className="absolute left-0 md:left-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent shadow-xl text-white hover:bg-accent/85"
+            className="absolute left-0 md:left-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent shadow-xl text-white hover:bg-accent/85 transition-all duration-200"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
 
-          {/* CAROUSEL */}
           <div className="relative w-full max-w-[300px] h-full flex items-center justify-center">
-            {videos.map((video, index) => (
-              <div
-                key={index}
-                className="absolute w-full h-full transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
-                style={getItemStyle(index)}
-              >
-                <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-black">
-                  {index === activeIndex && (
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
-                  )}
-                  <video
-                    ref={(el) => {
-                      videoRefs.current[index] = el;
-                    }}
-                    src={video.src}
-                    muted
-                    loop
-                    playsInline
-                    controls={index === activeIndex}
-                    className={`w-full h-full object-cover transition-all duration-500 ${
-                      index === activeIndex
-                        ? "scale-100"
-                        : "scale-105 brightness-75 blur-[1px]"
-                    }`}
-                  />
-                  {index !== activeIndex && (
-                    <div className="absolute inset-x-0 bottom-0 p-4">
-                      <div className="rounded-xl backdrop-blur-md bg-black/40 border border-white/10 px-4 py-3 shadow-lg">
-                        <p className="text-white text-sm leading-snug line-clamp-2 font-medium">
-                          {video.desc}
-                        </p>
+            {videos.map((video, index) => {
+              const style = getItemStyle(index);
+              const isActive = index === activeIndex;
+
+              return (
+                <div
+                  key={index}
+                  className="absolute w-full h-full transition-all duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+                  style={style}
+                >
+                  {isActive ? (
+                    <div className="relative w-full h-full">
+                      <div
+                        className="absolute inset-0 rounded-[38px] pointer-events-none"
+                        style={{
+                          border: "10px solid #1c1c1e",
+                          boxShadow:
+                            "0 0 0 1px #3a3a3c, 0 32px 64px rgba(0,0,0,0.45)",
+                          zIndex: 20,
+                        }}
+                      />
+
+                      <div
+                        className="absolute pointer-events-none"
+                        style={{
+                          right: "-14px",
+                          top: "22%",
+                          width: "4px",
+                          height: "60px",
+                          background: "#1c1c1e",
+                          borderRadius: "0 3px 3px 0",
+                          boxShadow: "2px 0 4px rgba(0,0,0,0.4)",
+                          zIndex: 21,
+                        }}
+                      />
+
+                      <div
+                        className="absolute pointer-events-none"
+                        style={{
+                          left: "-14px",
+                          top: "18%",
+                          width: "4px",
+                          height: "44px",
+                          background: "#1c1c1e",
+                          borderRadius: "3px 0 0 3px",
+                          boxShadow: "-2px 0 4px rgba(0,0,0,0.4)",
+                          zIndex: 21,
+                        }}
+                      />
+
+                      <div
+                        className="absolute pointer-events-none"
+                        style={{
+                          left: "-14px",
+                          top: "calc(18% + 56px)",
+                          width: "4px",
+                          height: "44px",
+                          background: "#1c1c1e",
+                          borderRadius: "3px 0 0 3px",
+                          boxShadow: "-2px 0 4px rgba(0,0,0,0.4)",
+                          zIndex: 21,
+                        }}
+                      />
+
+                      <div
+                        className="w-full h-full overflow-hidden bg-black"
+                        style={{ borderRadius: "28px" }}
+                      >
+                        <video
+                          ref={(el) => {
+                            videoRefs.current[index] = el;
+                          }}
+                          src={video.src}
+                          loop
+                          playsInline
+                          controls
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl bg-black">
+                      <video
+                        ref={(el) => {
+                          videoRefs.current[index] = el;
+                        }}
+                        src={video.src}
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover scale-105 brightness-75 blur-[1px]"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 p-4">
+                        <div className="rounded-xl backdrop-blur-md bg-black/40 border border-white/10 px-4 py-3 shadow-lg">
+                          <p className="text-white text-sm leading-snug line-clamp-2 font-medium">
+                            {video.desc}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          {/* RIGHT BUTTON */}
           <button
             onClick={handleNext}
-            className="absolute right-0 md:right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent shadow-xl text-white hover:bg-accent/85"
+            className="absolute right-0 md:right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-accent shadow-xl text-white hover:bg-accent/85 transition-all duration-200"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
+        </div>
+
+        <div className="flex justify-center gap-2 mt-6">
+          {videos.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              className={`transition-all duration-300 rounded-full ${
+                i === activeIndex
+                  ? "w-6 h-2 bg-accent"
+                  : "w-2 h-2 bg-gray-300 hover:bg-accent/50"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>

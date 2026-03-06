@@ -35,7 +35,7 @@ const DATA: Centre[] = [
       "Hormone therapy",
       "Personalized treatment protocols",
     ],
-    image: "/images/cancer-centre/cancer-img1.webp",
+    image: "/images/oncology/medical.jpg",
   },
   {
     id: 1,
@@ -52,7 +52,7 @@ const DATA: Centre[] = [
       "Reconstructive surgery",
       "Day-care procedures",
     ],
-    image: "/images/cancer-centre/cancer-img1.webp",
+    image: "/images/oncology/Surgical.jpg",
   },
   {
     id: 2,
@@ -69,7 +69,7 @@ const DATA: Centre[] = [
       "Brachytherapy",
       "Image guided therapy",
     ],
-    image: "/images/cancer-centre/cancer-img1.webp",
+    image: "/images/oncology/Radiation.jpg",
   },
   {
     id: 3,
@@ -82,7 +82,7 @@ const DATA: Centre[] = [
       "Expert transplant teams",
     ],
     rightPoints: ["Leukemia care", "Lymphoma care", "Myeloma management"],
-    image: "/images/cancer-centre/cancer-img1.webp",
+    image: "/images/oncology/Hemato.jpg",
   },
 ];
 

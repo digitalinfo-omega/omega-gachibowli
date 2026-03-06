@@ -231,3 +231,18 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 18s linear infinite;
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
