@@ -52,8 +52,8 @@ export default function HealthcareAppSection() {
               </div>
 
               <div className="flex flex-wrap gap-4 mt-10 justify-center md:justify-start">
-                <button className="bg-accent text-black px-6 py-3 rounded-md font-medium flex items-center gap-2">
-                  <Box /> App Store
+                <button className="bg-accent text-white px-6 py-3 rounded-md font-medium flex items-center gap-2">
+                  <Box color="#fff" /> App Store
                 </button>
                 <button className="border border-accent text-accent px-6 py-3 rounded-md font-medium flex items-center gap-2">
                   <Box /> Google Play
@@ -65,25 +65,25 @@ export default function HealthcareAppSection() {
               <Image
                 src="/images/mobile.webp"
                 alt="Healthcare App"
-                width={260}
-                height={620}
+                width={290}
+                height={650}
                 className="relative z-10"
                 priority
               />
 
-              <div className="absolute right-0 top-10 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
+              <div className="absolute md:block hidden -right-3 top-10 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
                 Omega hospitals has a great team of professionals and doctors to
                 provide best treatment for any of the ailments.
               </div>
 
-              <div className="absolute left-0 bottom-16 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
+              <div className="absolute md:block hidden -left-3 bottom-16 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
                 Omega hospitals specializes in cancer treatment. Dr. Ch Mohana
                 Vamsy who has more than 30 years of experience in cancer
                 treatment, is your go-to person for his opinion on treatment for
                 the cancer patient.
               </div>
 
-              <div className="absolute right-0 bottom-4 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
+              <div className="absolute md:block hidden -right-3 bottom-4 bg-white text-xs text-gray-700 p-2 rounded-xl max-w-50 shadow-lg">
                 Here is an application for you to book your doctor appointments
                 including appointments of Dr. Ch Mohana Vamsy.
               </div>

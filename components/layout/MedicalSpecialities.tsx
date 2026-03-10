@@ -201,7 +201,7 @@ export default function MedicalSpecialities() {
           30+ Medical Specialties
         </h2>
 
-        <div className="relative flex items-center">
+        <div className="relative flex items-center ">
           <button
             onClick={handlePrev}
             disabled={offset === 0}

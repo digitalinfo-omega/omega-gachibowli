@@ -141,44 +141,41 @@ const TABS = [
 ];
 
 export default function SpecializedCare() {
-  const [active, setActive] = useState(0);
+  const [activeTab, setActiveTab] = useState(0);
+  const [activeCard, setActiveCard] = useState(0);
+
+  const changeTab = (i: number) => {
+    setActiveTab(i);
+    setActiveCard(0); // reset to first card
+  };
 
   return (
     <section className="bg-secondary/5 py-10 md:py-20">
       <div className="container">
+        {/* heading */}
         <div className="text-center md:mb-20 mb-10">
-          <p
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            className="xs-para tracking-[0.35em] text-accent mb-4"
-          >
+          <p className="xs-para tracking-[0.35em] text-accent mb-4">
             30+ MEDICAL SPECIALTIES
           </p>
-          <h2
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            data-aos-delay="200"
-            className="heading text-black/90"
-          >
+
+          <h2 className="heading text-black/90">
             Specialized Care,{" "}
             <span className="text-accent italic">Tailored to You</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] md:gap-12 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-8">
+          {/* tabs */}
           <div className="space-y-3">
             {TABS.map((tab, i) => (
               <div
                 key={tab.label}
-                onClick={() => setActive(i)}
+                onClick={() => changeTab(i)}
                 className={`flex items-center gap-3 px-5 py-4 border cursor-pointer ${
-                  active === i
+                  activeTab === i
                     ? "text-black border-accent"
                     : "border-accent/10 text-[#8B97A7]"
                 }`}
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                data-aos-delay={i * 300}
               >
                 {tab.icon}
                 <span className="xs-para">{tab.label}</span>
@@ -186,34 +183,52 @@ export default function SpecializedCare() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 duration-300">
-            {TABS[active].cards.map((card, idx) => (
-              <div
-                key={card.title}
-                className="group border hover:bg-accent duration-300 border-accent/30 p-10 text-black/90 md:min-h-105 min-h-70 flex flex-col"
-                data-aos="fade-up"
-                data-aos-duration="1000"
-                data-aos-delay={idx * 200}
-              >
-                <h3 className="group-hover:text-white para mb-6">
-                  {card.title}
-                </h3>
-                <p className="group-hover:text-white sm-para text-gray-500 mb-10 leading-relaxed">
-                  {card.desc}
-                </p>
-                <div className="group hover:cursor-pointer mt-auto text-accent flex items-center gap-6">
-                  <span className="sm-para group-hover:text-white">
-                    {card.cta}
-                  </span>
-                  <span>
+          {/* cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {TABS[activeTab].cards.map((card, i) => {
+              const isActive = i === activeCard;
+
+              return (
+                <div
+                  key={card.title}
+                  onMouseEnter={() => setActiveCard(i)}
+                  className={`border p-10 min-h-70 flex flex-col duration-300 cursor-pointer ${
+                    isActive
+                      ? "bg-accent text-white border-accent"
+                      : "bg-white text-black/90 border-accent/30"
+                  }`}
+                >
+                  <h3 className={`para mb-6 ${isActive ? "text-white" : ""}`}>
+                    {card.title}
+                  </h3>
+
+                  <p
+                    className={`sm-para mb-10 leading-relaxed ${
+                      isActive ? "text-white" : "text-gray-500"
+                    }`}
+                  >
+                    {card.desc}
+                  </p>
+
+                  <div className="mt-auto flex items-center gap-6">
+                    <span
+                      className={`sm-para ${
+                        isActive ? "text-white" : "text-accent"
+                      }`}
+                    >
+                      {card.cta}
+                    </span>
+
                     <ArrowRight
                       size={15}
-                      className="group-hover:translate-x-1 group-hover:text-white duration-300 transition-transform"
+                      className={`duration-300 ${
+                        isActive ? "text-white translate-x-1" : "text-accent"
+                      }`}
                     />
-                  </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

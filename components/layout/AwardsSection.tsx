@@ -1,4 +1,5 @@
 import { Trophy } from "lucide-react";
+import Image from "next/image";
 
 export default function AwardsSection() {
   return (
@@ -20,9 +21,18 @@ export default function AwardsSection() {
                 2022
               </div>
 
-              <div className="mx-auto w-24 h-24 rounded-full bg-[#e6f4ff] flex items-center justify-center mb-6">
-                <div className="w-16 h-16 rounded-full border-4 border-[#a3d8ff] flex items-center justify-center">
-                  <div className="text-secondary text-4xl">★</div>
+              <div className="mx-auto w-28 h-28 rounded-full bg-[#e6f4fb] flex items-center justify-center mb-6">
+                {/* middle ring */}
+                <div className="w-20 h-20 rounded-full flex items-center justify-center bg-white">
+                  {/* icon */}
+                  <div className="w-12 h-12 flex items-center justify-center">
+                    <Image
+                      alt="awards"
+                      src="/images/awards.png"
+                      width={60}
+                      height={60}
+                    />
+                  </div>
                 </div>
               </div>
 

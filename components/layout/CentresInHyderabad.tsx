@@ -200,9 +200,7 @@ export default function CentresHyderabad() {
 
   const citiesInState = CENTRES.filter((c) => c.state === activeState);
 
-  const [activeCentre, setActiveCentre] = useState<Centre>(
-    CENTRES.find((c) => c.id === "gachibowli")!,
-  );
+  const [activeCentre, setActiveCentre] = useState<Centre>(CENTRES[0]);
 
   const handleStateChange = (state: string) => {
     setActiveState(state);
@@ -213,117 +211,101 @@ export default function CentresHyderabad() {
   return (
     <section className="py-10 md:py-20 bg-accent/5">
       <div className="container">
-        <h2
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          className="heading font-medium mb-10 md:text-start text-center"
-        >
-          Omega Hospitals <span className="text-accent">Centres in India</span>
-        </h2>
+        <div className="flex items-center gap-4 mb-10">
+          <h2 className="heading whitespace-nowrap">
+            Omega Hospitals{" "}
+            <span className="text-accent">Centres in India</span>
+          </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-10 gap-5">
-          <aside
-            data-aos="fade-up"
-            data-aos-duration="800"
-            data-aos-delay="200"
-            className="space-y-6"
-          >
-            {/* State selector */}
-            <div className="space-y-1">
-              {STATES.map((state) => {
-                const isActiveState = state === activeState;
+          <div className="h-px bg-accent flex-1"></div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* LEFT STATES */}
+          <aside className="space-y-2">
+            {STATES.map((state) => {
+              const isActive = state === activeState;
+
+              return (
+                <button
+                  key={state}
+                  onClick={() => handleStateChange(state)}
+                  className={`w-full text-left px-4 py-2 rounded-md font-medium transition
+                    ${
+                      isActive
+                        ? "bg-accent text-white"
+                        : "text-gray-700 hover:text-accent"
+                    }`}
+                >
+                  {state}
+                </button>
+              );
+            })}
+          </aside>
+
+          {/* RIGHT CARD */}
+          <div className="lg:col-span-3 bg-white rounded-2xl shadow-md p-6">
+            {/* CITY BUTTONS */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {citiesInState.map((centre) => {
+                const isActive = centre.id === activeCentre.id;
+
                 return (
                   <button
-                    key={state}
-                    onClick={() => handleStateChange(state)}
-                    className={`w-full xl-para text-left px-4 py-2 rounded-md transition font-semibold
+                    key={centre.id}
+                    onClick={() => setActiveCentre(centre)}
+                    className={`px-3 py-1.5 text-sm rounded-full border transition
                       ${
-                        isActiveState
-                          ? "bg-accent text-white"
-                          : "text-gray-700 hover:text-accent"
+                        isActive
+                          ? "bg-accent text-white border-accent"
+                          : "border-accent text-accent hover:bg-accent/10"
                       }`}
                   >
-                    {state}
+                    {centre.name}
                   </button>
                 );
               })}
             </div>
-          </aside>
 
-          <div
-            data-aos="fade-up"
-            data-aos-duration="800"
-            data-aos-delay="100"
-            className="lg:col-span-3 bg-white rounded-2xl shadow-md overflow-hidden p-7"
-          >
-            {/* City pill tabs */}
-            {citiesInState.length > 0 && (
-              <div className="flex flex-wrap gap-3 mb-6">
-                {citiesInState.map((centre) => {
-                  const isActive = centre.id === activeCentre.id;
-                  return (
-                    <button
-                      key={centre.id}
-                      onClick={() => setActiveCentre(centre)}
-                      className={`xl-para px-5 py-2 rounded-full border transition font-medium
-                        ${
-                          isActive
-                            ? "bg-accent text-white border-accent"
-                            : "border-accent text-accent hover:bg-accent/10"
-                        }`}
-                    >
-                      {centre.name}
-                    </button>
-                  );
-                })}
+            {/* CARD LAYOUT */}
+            <div className="grid md:grid-cols-2 gap-6 items-center">
+              {/* IMAGE LEFT */}
+              <div className="relative w-full h-64 md:h-72">
+                <Image
+                  src={activeCentre.image}
+                  alt={activeCentre.name}
+                  fill
+                  className="object-cover rounded-xl"
+                />
               </div>
-            )}
 
-            <div className="relative h-85 w-full flex items-center justify-center overflow-hidden">
-              <Image
-                src={activeCentre.image}
-                alt={activeCentre.name}
-                fill
-                className="object-cover object-center rounded-2xl"
-              />
-            </div>
+              {/* CONTENT RIGHT */}
+              <div>
+                <div className="flex justify-between items-center">
+                  <h3 className="text-2xl font-semibold text-accent">
+                    {activeCentre.name}
+                  </h3>
 
-            <div className="p-6">
-              <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-semibold text-accent">
-                  {activeCentre.name}
-                </h3>
-
-                <div className="flex items-center gap-1 text-sm">
-                  {"★★★★★".split("").map((_, i) => (
-                    <span key={i} className="text-accent">
-                      ★
-                    </span>
-                  ))}
-                  <span className="ml-1 font-medium text-gray-700">
-                    {activeCentre.rating}
-                  </span>
+                  <div className="text-sm">★★★★★ {activeCentre.rating}</div>
                 </div>
-              </div>
 
-              <p className="mt-3 text-gray-600 text-sm max-w-xl md:text-start text-center">
-                {activeCentre.description}
-              </p>
+                <p className="mt-3 text-gray-600">{activeCentre.description}</p>
 
-              <hr className="my-6" />
+                <hr className="my-6" />
 
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4">
-                <button className="w-full sm:w-auto bg-accent hover:bg-accent/70 text-white px-6 py-2 rounded-md font-medium text-center">
-                  Book a Free Consultation
-                </button>
+                <div className="flex flex-wrap gap-3">
+                  <button className="bg-accent text-white px-5 py-2 rounded-md">
+                    Book Consultation
+                  </button>
 
-                <button className="w-full sm:w-auto border border-accent text-accent px-6 py-2 rounded-md font-medium hover:bg-purple-50 text-center">
-                  Call Us
-                </button>
+                  <button className="border border-accent text-accent px-5 py-2 rounded-md">
+                    Call Us
+                  </button>
 
-                <button className="w-full sm:w-auto border border-accent text-accent px-6 py-2 rounded-md font-medium hover:bg-purple-50 text-center">
-                  Get Directions
-                </button>
+                  <button className="border border-accent text-accent px-5 py-2 rounded-md">
+                    Directions
+                  </button>
+                </div>
               </div>
             </div>
           </div>
